@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE>AES Encrypt Decrypt Page</TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/sytelus/CryptoJS/v3.1.2/rollups/md5.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/sytelus/CryptoJS/v3.1.2/rollups/aes.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/sytelus/CryptoJS/v3.1.2/components/core-min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/sytelus/CryptoJS/v3.1.2/components/enc-utf16-min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/sytelus/CryptoJS/v3.1.2/components/enc-base64-min.js"></script>
+ </HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	$(document).ready(function() {
+    $("#key").prop("value","youpasshere");
+    $("#encrypte").click(function(){
+       // alert("button");
+        var key=$("#key").val();
+		var source=$("#source").val();
+        //alert(source);
+        var encrypted = CryptoJS.AES.encrypt(source, key);
+        $("#target").prop("value",encrypted);
+    }); 
+    $("#decrypte").click(function(){
+       // alert("button");
+        var key=$("#key").val();
+		var source=$("#source").val();
+        //alert(source);
+        //var decrypted = CryptoJS.AES.decrypt(source, key);
+        var decrypted=CryptoJS.AES.decrypt(source,key).toString(CryptoJS.enc.Utf8);
+        
+        //alert(source);
+        //var words = CryptoJS.enc.Hex.parse("48656c6c6f2c20576f726c6421");
+        //var hex   = CryptoJS.enc.Hex.stringify(words);
+        //alert(words);
+        $("#target").prop("value",decrypted);
+    });     
+});
+//-->
+</SCRIPT>
+ <BODY>
+  
+  <H1>AES Encrypt Decrypt Page</H1>
+<div> </div>
+  <FORM METHOD=POST ACTION="">
+	PassWord<INPUT TYPE="text" NAME="key" id="key"><BR>
+        <p>
+    <TEXTAREA NAME="source" ROWS="20" COLS="80" id="source"></TEXTAREA>
+        <p>
+    <TEXTAREA NAME="target" ROWS="20" COLS="80" id="target"></TEXTAREA>    
+        <p>
+    <INPUT TYPE="button" VALUE="Encrypte" ONCLICK="" id="encrypte">
+    <INPUT TYPE="button" VALUE="Decrypte" ONCLICK="" id="decrypte">
+  </FORM>
+
+ </BODY>
+</HTML>
